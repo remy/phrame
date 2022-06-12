@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phone + frame = phrame</title>
+    <meta name="description" content="A simple app to display one of your images, full screen in a wake lock state">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" sizes="192x192" href="/images/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
+    <link rel="shortcut icon" href="/images/icons/icon-192x192.png">
+    <meta name="theme-color" content="#C4EFFD">
+  </head>
+
+  <body>
+    <main id="select">
+      <h1>Phrame</h1>
+      <p>This is a single serving PWA that will display an image of your choice at full screen, rotate the screen to the
+        right orientation and apply a "wake lock" - preventing your device from sleeping whilst the app is active.</p>
+      <hr>
+      <p>Select a photo from your device. Then this site will load the image and keep your device on.</p>
+      <label class="button">
+        <span>Tap to select an image</span>
+        <input id="file" type="file" accept="image/*">
+      </label>
+      <button hidden id="launch" class="button">
+        <span>Image loaded, tap to start</span>
+      </button>
+    </main>
+    <footer>
+      <p>A PWA by <a href="https://remysharp.com">Remy Sharp</a></p>
+    </footer>
+    <script src="https://unpkg.com/wakelock-lazy-polyfill"></script>
+    <script src="/js/mod.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
+  </body>
+
+</html>
